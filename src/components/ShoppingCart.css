@@ -1,0 +1,42 @@
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-controls button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.quantity-controls button:hover {
+  background-color: #218838;
+}
+
+.quantity-controls input {
+  width: 50px;
+  text-align: center;
+  margin: 0 0.5rem;
+}
+
+.remove-button {
+  margin-left: 20mm;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  background-color: #c82333;
+}

@@ -5,6 +5,8 @@ import './ShopPage.css'; // Import the CSS file
 
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
 
@@ -12,21 +14,37 @@ const ShopPage = () => {
     axios.get('https://fakestoreapi.com/products')
       .then(response => setProducts(response.data))
       .catch(error => console.error('Error fetching products:', error));
+    
+    axios.get('https://fakestoreapi.com/products/categories')
+      .then(response => setCategories(response.data))
+      .catch(error => console.error('Error fetching categories:', error));
   }, []);
+
+  const filteredProducts = selectedCategory
+    ? products.filter(product => product.category === selectedCategory)
+    : products;
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="container">
       <h1>Shop</h1>
+      <div className="category-bar">
+        <button onClick={() => setSelectedCategory('')}>All</button>
+        {categories.map(category => (
+          <button key={category} onClick={() => setSelectedCategory(category)}>
+            {category}
+          </button>
+        ))}
+      </div>
       <ProductList products={currentProducts} />
       <Pagination
         productsPerPage={productsPerPage}
-        totalProducts={products.length}
+        totalProducts={filteredProducts.length}
         paginate={paginate}
         currentPage={currentPage}
       />

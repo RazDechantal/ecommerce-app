@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ProductList from '../components/ProductList';
 import axios from 'axios';
-import './ShopPage.css'; // Import the CSS file
+import './ShopPage.css';
 
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
 
@@ -20,9 +21,10 @@ const ShopPage = () => {
       .catch(error => console.error('Error fetching categories:', error));
   }, []);
 
-  const filteredProducts = selectedCategory
-    ? products.filter(product => product.category === selectedCategory)
-    : products;
+  const filteredProducts = products.filter(product => 
+    product.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
+    (selectedCategory ? product.category === selectedCategory : true)
+  );
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -33,6 +35,13 @@ const ShopPage = () => {
   return (
     <div className="container">
       <h1>Shop</h1>
+      <input 
+        type="text" 
+        placeholder="Search products..." 
+        value={searchQuery} 
+        onChange={(e) => setSearchQuery(e.target.value)} 
+        className="search-box"
+      />
       <div className="category-bar">
         <button onClick={() => setSelectedCategory('')}>All</button>
         {categories.map(category => (

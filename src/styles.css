@@ -113,10 +113,55 @@ input[type="number"] {
 
 /* Navbar Styling */
 .custom-navbar {
-  padding: 0.5rem 0; /* Reduce the padding */
+  padding: 0.5rem 1rem; /* Decrease padding to reduce height */
 }
 
 .navbar-brand, .nav-link {
   line-height: 1.2; /* Reduce the line height */
   font-size: 1.2rem; /* Keep the font size */
+}
+
+.search-box {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.auth-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.auth-container h1 {
+  margin-bottom: 1.5rem;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.auth-container button:hover {
+  background-color: #0056b3;
 }

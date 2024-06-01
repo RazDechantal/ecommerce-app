@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaStore } from 'react-icons/fa';  // You need to install react-icons
+import { FaStore } from 'react-icons/fa';
 
 const HomePage = () => {
   return (

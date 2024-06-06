@@ -8,6 +8,7 @@ import OrderConfirmation from './components/OrderConfirmation';
 import Header from './components/Header';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import ContactPage from './pages/ContactPage'; // Import the ContactPage component
 import { CartProvider } from './context/CartContext';
 import { UserProvider } from './context/UserContext';
 
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/about" element={<div className="container"><h1>About</h1><p>This is a sample digital market application.</p></div>} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/contact" element={<ContactPage />} /> {/* Add the ContactPage route */}
           </Routes>
         </Router>
       </CartProvider>
